@@ -1,0 +1,15 @@
+@layer components {
+  .contact-form .field__label {
+    width: auto;
+    height: auto;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 16px;
+  }
+
+  .contact-form__button {
+    margin-top: 16px;
+  }
+}

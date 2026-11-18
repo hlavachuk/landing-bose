@@ -1,0 +1,59 @@
+@use '../abstracts/tokens' as t;
+
+@layer base {
+  @font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/inter-normal-400.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/inter-normal-700.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/fonts/inter-italic-800.woff2') format('woff2');
+  }
+
+  :root {
+    --color-ink: #{t.$ink};
+    --color-paper: #{t.$paper};
+    --color-menu: #{t.$menu};
+    --color-field: #{t.$field};
+    --color-muted: #{t.$muted};
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: Inter, sans-serif;
+    font-optical-sizing: none;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--color-ink);
+    background: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 3px solid #2768b1;
+    outline-offset: 5px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

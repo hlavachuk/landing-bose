@@ -1,0 +1,28 @@
+@use '../abstracts/mixins' as *;
+
+@layer components {
+  .footer {
+    height: 200px;
+    overflow: hidden;
+
+    @include mq(tablet) {
+      height: 400px;
+    }
+
+    @include mq(desktop) {
+      height: 460px;
+    }
+  }
+
+  .footer__image-picture {
+    display: block;
+    height: 100%;
+  }
+
+  .footer__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

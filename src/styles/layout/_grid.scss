@@ -1,0 +1,33 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/tokens' as t;
+
+@layer layout {
+  .container {
+    width: calc(100% - 40px);
+    max-width: t.$content-max;
+    margin-inline: auto;
+
+    @include mq(tablet) {
+      width: calc(100% - 144px);
+    }
+
+    @include mq(desktop) {
+      width: calc(100% - 240px);
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: t.$gutter-mobile;
+
+    @include mq(tablet) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      column-gap: t.$gutter;
+    }
+
+    @include mq(desktop) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+}

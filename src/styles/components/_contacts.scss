@@ -1,0 +1,57 @@
+@use '../abstracts/mixins' as *;
+
+@layer components {
+  .contacts__content {
+    row-gap: 48px;
+    margin-top: 48px;
+  }
+
+  .contacts__form {
+    grid-column: 1 / -1;
+
+    @include mq(tablet) {
+      grid-column: 1 / 4;
+    }
+
+    @include mq(desktop) {
+      grid-column: 1 / 6;
+    }
+  }
+
+  .contacts__details {
+    grid-column: 1 / -1;
+
+    @include mq(tablet) {
+      grid-column: 4 / 7;
+    }
+
+    @include mq(desktop) {
+      grid-column: 8 / 12;
+    }
+  }
+
+  .contacts__group + .contacts__group {
+    margin-top: 24px;
+  }
+
+  .contacts__label {
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .contacts__value {
+    display: block;
+    width: fit-content;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  .contacts__value:hover {
+    text-decoration: underline;
+  }
+
+  .contacts__address {
+    font-style: normal;
+  }
+}

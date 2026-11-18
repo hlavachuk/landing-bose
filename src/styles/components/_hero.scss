@@ -1,0 +1,86 @@
+@use '../abstracts/tokens' as t;
+@use '../abstracts/mixins' as *;
+
+@layer components {
+  .hero {
+    height: 568px;
+    position: relative;
+    overflow: hidden;
+
+    @include mq(tablet) {
+      height: 992px;
+    }
+
+    @include mq(desktop) {
+      height: 720px;
+    }
+  }
+
+  .hero__picture {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero__image-picture {
+    display: block;
+    height: 100%;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include mq(tablet) {
+      object-position: center;
+    }
+
+    @include mq(desktop) {
+      object-position: center;
+    }
+  }
+
+  .hero__content {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 40px;
+
+    @include mq(tablet) {
+      bottom: 64px;
+    }
+  }
+
+  .hero__wave {
+    width: 48px;
+    height: 58px;
+    margin-bottom: 16px;
+
+    @include mq(tablet) {
+      width: 63px;
+      height: 76px;
+      margin-bottom: 40px;
+    }
+
+    @include mq(desktop) {
+      margin-bottom: 32px;
+    }
+  }
+
+  .hero__title {
+    font-size: t.$title-size-mobile;
+    line-height: 1;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: t.$title-tracking;
+
+    @include mq(tablet) {
+      font-size: t.$title-size-tablet;
+    }
+
+    @include mq(desktop) {
+      font-size: t.$title-size-desktop;
+    }
+  }
+}

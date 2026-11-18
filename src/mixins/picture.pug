@@ -1,0 +1,41 @@
+mixin picture(name, alt, className, size, wide = false, eager = false)
+  - const widths = wide ? [640, 1280, 1920, 2520] : (name.endsWith('-1') && !name.startsWith('sunglasses')) || name === 'sunglasses-2' ? [260, 400, 648, 1344] : [260, 400, 648];
+  - const srcset = (format) => widths.map((w) => `/images/${name}-${w}.${format} ${w}w`).join(', ');
+  picture(class=className.split(' ')[0] + '-picture')
+    if name === 'hero'
+      each format in ['avif', 'webp', 'jpeg']
+        source(
+          media='(max-width: 743px)',
+          type='image/' + format,
+          srcset='/images/hero-mobile-640.' + (format === 'jpeg' ? 'jpg' : format) + ' 640w',
+          sizes='100vw'
+        )
+      each format in ['avif', 'webp', 'jpeg']
+        source(
+          media='(max-width: 1259px)',
+          type='image/' + format,
+          srcset=[640, 1280].map((w) => `/images/hero-tablet-${w}.${format === 'jpeg' ? 'jpg' : format} ${w}w`).join(', '),
+          sizes='100vw'
+        )
+    if ['headphones-1', 'speakers-1', 'sunglasses-2'].includes(name)
+      each format in ['avif', 'webp', 'jpeg']
+        source(
+          media='(max-width: 743px)',
+          type='image/' + format,
+          srcset=[260, 400, 648].map((w) => `/images/${name}-mobile-${w}.${format === 'jpeg' ? 'jpg' : format} ${w}w`).join(', '),
+          sizes=size
+        )
+    source(type='image/avif', srcset=srcset('avif'), sizes=size)
+    source(type='image/webp', srcset=srcset('webp'), sizes=size)
+    img(
+      class=className,
+      src=`/images/${name}-${widths[widths.length - 1]}.jpg`,
+      srcset=srcset('jpg'),
+      sizes=size,
+      alt=alt,
+      width=wide ? 2520 : widths.includes(1344) ? 1344 : 648,
+      height=wide ? (name === 'hero' ? 1440 : 1068) : 648,
+      loading=eager ? 'eager' : 'lazy',
+      fetchpriority=eager ? 'high' : 'auto',
+      decoding='async'
+    )

@@ -1,0 +1,150 @@
+extends ../layouts/main.pug
+include ../mixins/picture.pug
+include ../mixins/header.pug
+block data
+  include ../data/catalog.pug
+
+block content
+  #home.hero
+    .hero__picture
+      +picture(
+        'hero',
+        'Woman enjoying music with Bose over-ear headphones',
+        'hero__image',
+        '100vw',
+        true,
+        true,
+      )
+    +header
+    .hero__content.container
+      img.hero__wave(src='/icons/wave.svg', alt='', width='63', height='76')
+      h1.hero__title The world shades.
+        br
+        | Your music shines.
+  #menu.menu
+    nav.nav(aria-label='Main navigation')
+      +header(true)
+      .container
+        ul.nav__links
+          each item in navigation
+            li
+              a.nav__link(href='#' + item.href)= item.label
+        a.nav__phone(href='tel:+12345555555') +1 234 5555-55-55
+        a.nav__order(href='tel:+12345555555') Call to order
+  main#main.page__main
+    section#recommended.recommended.page__recommended.container(
+      aria-labelledby='recommended-title'
+    )
+      h2#recommended-title.section-title Recommended
+      .recommended__list.grid
+        each product in products
+          article.product-card.recommended__item
+            +picture(
+              product.image,
+              product.name,
+              'product-card__image',
+              '(min-width: 1260px) 324px, (min-width: 744px) 392px, calc(100vw - 40px)',
+            )
+            h3.product-card__title= product.name
+            p.product-card__category= product.category
+            p.product-card__price= product.price
+    section#categories.categories.page__section.container(
+      aria-labelledby='categories-title'
+    )
+      h2#categories-title.section-title Browse Bose
+        br
+        | products by category
+      .categories__list
+        each category in categories
+          article.category
+            .grid
+              each image, i in category.images
+                .category__picture(
+                  class=i === category.wide ? 'category__picture--wide' : ''
+                )
+                  +picture(
+                    image,
+                    category.name +
+                      (i === 0
+                        ? ' — outdoor listening'
+                        : ' — Bose audio'),
+                    'category__image' +
+                      (i === category.wide
+                        ? ' category__image--wide'
+                        : ''),
+                    i === category.wide
+                      ? '(min-width: 1260px) 672px, (min-width: 744px) 392px, calc((100vw - 60px) / 2)'
+                      : '(min-width: 1260px) 324px, (min-width: 744px) 184px, calc((100vw - 60px) / 2)',
+                  )
+            h3.category__title= category.name
+      .grid
+        a.button.categories__button(
+          href='https://www.bose.com/c/all-products',
+          target='_blank',
+          rel='noopener noreferrer'
+        ) View all
+    section#how-to-buy.benefits.page__section.container.grid(
+      aria-labelledby='benefits-title'
+    )
+      h2#benefits-title.section-title.section-title--left.benefits__title Why buy direct
+        br
+        | from Bose
+      .benefits__content
+        ul.benefits__list
+          each benefit in benefits
+            li= benefit
+        p.benefits__text A great product is more than what’s in the box. It’s a promise of premium performance, world-class support, and everything you expect from a trusted brand. It’s just one of many reasons why you’ll shop with confidence on Bose.com.
+    section#contacts.contacts.page__section.container(
+      aria-labelledby='contacts-title'
+    )
+      h2#contacts-title.section-title Contact us
+      .contacts__content.grid
+        form.contact-form.contacts__form(action='#contacts', method='get')
+          .field
+            label.field__label.visually-hidden(for='contact-name') Name
+            input#contact-name.field__input(
+              type='text',
+              name='name',
+              placeholder='Name',
+              autocomplete='name',
+              required
+            )
+          .field
+            label.field__label.visually-hidden(for='contact-email') Email
+            input#contact-email.field__input(
+              type='email',
+              name='email',
+              placeholder='Email',
+              autocomplete='email',
+              required
+            )
+          .field
+            label.field__label.visually-hidden(for='contact-message') Message
+            textarea#contact-message.field__input.field__input--message(
+              name='message',
+              placeholder='Message',
+              required
+            )
+          button.button.contact-form__button(type='submit') Send
+        .contacts__details
+          .contacts__group
+            p.contacts__label Phone
+            a.contacts__value(href='tel:+12345555555') +1 234 5555-55-55
+          .contacts__group
+            p.contacts__label Email
+            a.contacts__value(href='mailto:hello@miami.com') hello@miami.com
+          .contacts__group
+            p.contacts__label Address
+            address.contacts__address.contacts__value 400 first ave.
+              br
+              | suite 700
+              br
+              | Minneapolis, MN 55401
+  footer.footer.page__footer
+    +picture(
+      'banner',
+      'Woman wearing Bose wireless earbuds outdoors',
+      'footer__image',
+      '100vw',
+      true,
+    )

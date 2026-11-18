@@ -1,0 +1,24 @@
+@use '../abstracts/tokens' as t;
+@use '../abstracts/mixins' as *;
+
+@layer components {
+  .section-title {
+    font-size: t.$title-size-mobile;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: t.$title-tracking;
+    text-align: center;
+
+    @include mq(tablet) {
+      font-size: t.$title-size-tablet;
+    }
+
+    @include mq(desktop) {
+      font-size: t.$title-size-desktop;
+    }
+  }
+
+  .section-title--left {
+    text-align: left;
+  }
+}

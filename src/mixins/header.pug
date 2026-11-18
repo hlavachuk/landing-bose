@@ -1,0 +1,29 @@
+mixin header(inMenu = false)
+  header.header
+    .header__inner.container
+      a(href='#home', aria-label='Bose — home')
+        img.header__logo(
+          src='/icons/logo.svg',
+          alt='Bose',
+          width='190',
+          height='24'
+        )
+      .header__actions
+        unless inMenu
+          a.header__phone.header__control(
+            href='tel:+12345555555',
+            aria-label='Call Bose: +1 234 5555-55-55'
+          )
+            span.header__number +1 234 5555-55-55
+            include ../../public/icons/phone.svg
+        a.header__control.header__menu(
+          href=inMenu ? '#home' : '#menu',
+          aria-label=inMenu ? 'Close menu' : 'Open menu'
+        )
+          if inMenu
+            include ../../public/icons/close.svg
+          else
+            span.header__menu-default
+              include ../../public/icons/menu.svg
+            span.header__menu-hover
+              include ../../public/icons/menu-hover.svg

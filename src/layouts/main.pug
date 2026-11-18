@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(
+      name='description',
+      content='Discover Bose speakers, headphones and audio sunglasses. Enjoy premium sound, free shipping and a 90-day risk-free trial.'
+    )
+    meta(name='theme-color', content='#e8eff9')
+    title Bose — Your music shines
+    link(rel='icon', href='/icons/logo.svg', type='image/svg+xml')
+    link(
+      rel='preload',
+      href='/fonts/inter-normal-400.woff2',
+      as='font',
+      type='font/woff2',
+      crossorigin
+    )
+    link(
+      rel='preload',
+      href='/fonts/inter-italic-800.woff2',
+      as='font',
+      type='font/woff2',
+      crossorigin
+    )
+    link(rel='stylesheet', href='/src/styles/main.scss')
+  body.page
+    block data
+    a.skip-link(href='#main') Skip to main content
+    block content

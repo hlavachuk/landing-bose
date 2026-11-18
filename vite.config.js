@@ -14,7 +14,7 @@ export default ({ command }) => ({
         },
       },
     }),
-    pug({ root: './src' }),
+    pug({ root: './src', options: { doctype: 'html' } }),
   ],
   resolve: {
     alias: {

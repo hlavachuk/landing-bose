@@ -1,0 +1,30 @@
+@use '../abstracts/tokens' as t;
+
+@layer components {
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: t.$button-height;
+    border: 3px solid var(--color-ink);
+    border-radius: t.$control-radius;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: t.$text-line;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    color: var(--color-ink);
+    background: var(--color-paper);
+  }
+
+  .button:active {
+    color: var(--color-paper);
+    background: #111;
+    border-color: #111;
+  }
+}
