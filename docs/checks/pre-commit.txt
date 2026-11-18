@@ -1,0 +1,25 @@
+⋯ Backing up original state…
+✔ Done backing up original state (a1d9062)!
+⋯ Running tasks for staged files…
+    *.scss — 1 file
+      ⋯ stylelint --fix
+      ⋯ prettier --write
+
+✖ stylelint --fix
+↓ prettier --write
+
+✖ Failed to run tasks for staged files!
+↓ Skipped staging changes from tasks…
+⋯ Reverting to original state because of errors…
+✔ Done reverting to original state!
+⋯ Cleaning up temporary files…
+✔ Done cleaning up temporary files!
+
+✖ stylelint --fix:
+
+src/styles/components/_hook-check.scss
+  1:1   ✖  Too many ID selectors in "#hook-check", maximum 0  selector-max-id
+  1:26  ✖  Disallowed !important                              declaration-no-important
+
+✖ 2 problems (2 errors, 0 warnings)
+husky - pre-commit script failed (code 1)

@@ -1,0 +1,10 @@
+chrome 157
+chrome 156
+edge 156
+edge 155
+firefox 160
+firefox 159
+ios_saf 27.0
+ios_saf 26.6
+safari 27.2
+safari 27.1

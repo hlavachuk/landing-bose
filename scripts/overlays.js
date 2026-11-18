@@ -8,15 +8,15 @@ for (const width of [320, 744, 1260]) {
     .toBuffer({ resolveWithObject: true });
   for (let index = 3; index < data.length; index += 4) data[index] = 128;
   const overlay = await sharp(data, { raw: info }).png().toBuffer();
-  const base = await sharp(page)
-    .resize({
-      width,
-      height: info.height,
-      fit: 'contain',
-      position: 'top',
-      background: '#fff',
-    })
-    .toBuffer();
+  const pageInfo = await sharp(page).metadata();
+  const base =
+    pageInfo.height >= info.height
+      ? await sharp(page)
+          .extract({ left: 0, top: 0, width, height: info.height })
+          .toBuffer()
+      : await sharp(page)
+          .extend({ bottom: info.height - pageInfo.height, background: '#fff' })
+          .toBuffer();
   await sharp(base)
     .composite([{ input: overlay }])
     .jpeg({ quality: 92 })
