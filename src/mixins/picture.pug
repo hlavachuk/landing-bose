@@ -17,12 +17,19 @@ mixin picture(name, alt, className, size, wide = false, eager = false)
           srcset=[640, 1280].map((w) => `/images/hero-tablet-${w}.${format === 'jpeg' ? 'jpg' : format} ${w}w`).join(', '),
           sizes='100vw'
         )
-    if ['headphones-1', 'speakers-1', 'sunglasses-2'].includes(name)
+    if name !== 'hero' && !name.startsWith('speaker-')
       each format in ['avif', 'webp', 'jpeg']
         source(
           media='(max-width: 743px)',
           type='image/' + format,
           srcset=[260, 400, 648].map((w) => `/images/${name}-mobile-${w}.${format === 'jpeg' ? 'jpg' : format} ${w}w`).join(', '),
+          sizes=size
+        )
+      each format in ['avif', 'webp', 'jpeg']
+        source(
+          media='(max-width: 1259px)',
+          type='image/' + format,
+          srcset=(name === 'banner' ? [640, 1280] : ['headphones-1', 'speakers-1', 'sunglasses-2'].includes(name) ? [260, 400, 648, 784] : [260, 400, 648]).map((w) => `/images/${name}-tablet-${w}.${format === 'jpeg' ? 'jpg' : format} ${w}w`).join(', '),
           sizes=size
         )
     source(type='image/avif', srcset=srcset('avif'), sizes=size)
@@ -34,7 +41,7 @@ mixin picture(name, alt, className, size, wide = false, eager = false)
       sizes=size,
       alt=alt,
       width=wide ? 2520 : widths.includes(1344) ? 1344 : 648,
-      height=wide ? (name === 'hero' ? 1440 : 1068) : 648,
+      height=wide ? (name === 'hero' ? 1440 : 912) : 648,
       loading=eager ? 'eager' : 'lazy',
       fetchpriority=eager ? 'high' : 'auto',
       decoding='async'

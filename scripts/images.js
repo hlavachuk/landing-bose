@@ -26,7 +26,16 @@ for (const file of await readdir(originals)) {
   if (!/\.(png|jpg)$/i.test(file)) continue;
   const name = path.parse(file).name;
   const input = new URL(file, originals).pathname;
-  if (name.startsWith('hero') || name === 'banner') {
+  if (name.endsWith('-mobile') || name.endsWith('-tablet')) {
+    const { width } = await sharp(input).metadata();
+    await render(
+      input,
+      name,
+      [260, 400, 640, 648, 784, 1280].filter(
+        (size) => size <= Math.max(width, 648),
+      ),
+    );
+  } else if (name.startsWith('hero') || name === 'banner') {
     const { width } = await sharp(input).metadata();
     await render(
       input,
@@ -35,7 +44,6 @@ for (const file of await readdir(originals)) {
     );
   } else if (widePhotos.includes(name)) {
     await render(input, name, [260, 400, 648, 1344], 672 / 324);
-    await render(input, `${name}-mobile`, [260, 400, 648], 1);
   } else {
     await render(input, name, [260, 400, 648], 1);
   }

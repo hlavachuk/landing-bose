@@ -1,0 +1,18 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/tokens' as t;
+
+@layer layout {
+  .container {
+    width: calc(100% - 40px);
+    max-width: t.$content-max;
+    margin-inline: auto;
+
+    @include mq(tablet) {
+      width: calc(100% - 144px);
+    }
+
+    @include mq(desktop) {
+      width: calc(100% - 240px);
+    }
+  }
+}

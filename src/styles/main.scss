@@ -2,6 +2,7 @@
 @layer reset, base, layout, components, utilities;
 @include meta.load-css('reset');
 @include meta.load-css('base');
+@include meta.load-css('layout/container');
 @include meta.load-css('layout/grid');
 @include meta.load-css('components/page');
 @include meta.load-css('components/section-title');
