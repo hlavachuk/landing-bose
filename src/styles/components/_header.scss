@@ -1,81 +1,83 @@
 @use '../abstracts/mixins' as *;
 
 @layer components {
-  .header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-block: 24px;
+  .header {
+    &__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 24px;
 
-    @include mq(tablet) {
-      padding-block: 32px;
+      @include mq(tablet) {
+        padding-block: 32px;
+      }
     }
-  }
 
-  .header__logo {
-    width: 126px;
-    height: 16px;
+    &__logo {
+      width: 126px;
+      height: 16px;
 
-    @include mq(tablet) {
-      width: 190px;
-      height: 24px;
+      @include mq(tablet) {
+        width: 190px;
+        height: 24px;
+      }
     }
-  }
 
-  .header__actions {
-    display: flex;
-    gap: 24px;
-    align-items: center;
+    &__actions {
+      display: flex;
+      gap: 24px;
+      align-items: center;
 
-    @include mq(tablet) {
-      gap: 32px;
+      @include mq(tablet) {
+        gap: 32px;
+      }
     }
-  }
 
-  .header__control {
-    display: block;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+    &__control {
+      display: block;
 
-    @include mq(tablet) {
-      width: 32px;
-      height: 32px;
+      @include square(24px);
+
+      cursor: pointer;
+
+      @include mq(tablet) {
+        @include square(32px);
+      }
     }
-  }
 
-  .header__phone {
-    position: relative;
-  }
+    &__phone {
+      position: relative;
+    }
 
-  .header__number {
-    display: none;
-    position: absolute;
-    right: calc(100% + 12px);
-    top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
+    &__number {
+      display: none;
+      position: absolute;
+      right: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
 
-  .header__phone:hover .header__number,
-  .header__phone:focus-visible .header__number {
-    @include mq(desktop) {
+    &__phone:hover .header__number,
+    &__phone:focus-visible .header__number {
+      @include mq(desktop) {
+        display: block;
+      }
+    }
+
+    &__menu-hover {
+      display: none;
+    }
+
+    &__menu:hover .header__menu-default {
+      display: none;
+    }
+
+    &__menu:hover .header__menu-hover {
       display: block;
     }
-  }
-
-  .header__menu-hover {
-    display: none;
-  }
-
-  .header__menu:hover .header__menu-default {
-    display: none;
-  }
-
-  .header__menu:hover .header__menu-hover {
-    display: block;
   }
 }

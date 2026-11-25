@@ -15,16 +15,16 @@
     font-weight: 700;
     line-height: t.$text-line;
     cursor: pointer;
-  }
 
-  .button:hover {
-    color: var(--color-ink);
-    background: var(--color-paper);
-  }
+    &:hover {
+      color: var(--color-ink);
+      background: var(--color-paper);
+    }
 
-  .button:active {
-    color: var(--color-paper);
-    background: #111;
-    border-color: #111;
+    &:active {
+      color: var(--color-paper);
+      background: t.$pressed;
+      border-color: t.$pressed;
+    }
   }
 }

@@ -125,3 +125,16 @@ BEM: `block`, `block__element`, `block--modifier`. Відступи між бл�
 ## Завдання 7. Публікація
 
 [Сайт](https://hlavachuk.github.io/landing-bose/) публікується GitHub Actions із гілки `main`. Збірка використовує production base `/landing-bose/`; локальний сервер працює від `/`.
+
+## SCSS: що показати на захисті
+
+Вихідні стилі — у `src/styles`. Sass компілює їх у звичайний CSS у `dist`.
+
+- [abstracts/_tokens.scss](src/styles/abstracts/_tokens.scss): SCSS-змінні кольорів і розмірів, map-и брейкпоінтів та кількості колонок.
+- [abstracts/_mixins.scss](src/styles/abstracts/_mixins.scss): `mq($name)` з `sass:map` і `@content`; `square($size)` для іконок; `cover-image` для фото; `responsive-title` для спільного адаптивного розміру заголовків.
+- [components/_hero.scss](src/styles/components/_hero.scss): BEM-елементи через `&__`, виклики `cover-image` та `responsive-title` із вкладеним вмістом.
+- [components/_field.scss](src/styles/components/_field.scss): `.field { &__input { &:hover { ... } &--message { ... } } }`, кольори станів із токенів.
+- [components/_section-title.scss](src/styles/components/_section-title.scss): спільний міксин заголовка та модифікатор `&--left`.
+- [layout/_grid.scss](src/styles/layout/_grid.scss): кількість колонок береться з map-а через `map.get()`.
+
+Методологія варіанта №6 збережена: BEM та каскадні шари `@layer reset, base, layout, components, utilities`. Вкладеність перевіряє Stylelint: максимум три рівні. Геометрія, кольори й адаптивні значення після рефакторингу збережені.

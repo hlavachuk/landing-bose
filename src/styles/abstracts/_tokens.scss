@@ -22,3 +22,12 @@ $control-height: 48px;
 $button-height: 56px;
 $text-line: 22px;
 $paragraph-line: 27px;
+$grid-columns: (
+  mobile: 2,
+  tablet: 6,
+  desktop: 12,
+);
+$placeholder: #7e7e83;
+$field-border-hover: #d5d7de;
+$invalid: #ad1720;
+$pressed: #111;

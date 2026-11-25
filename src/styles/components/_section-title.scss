@@ -3,22 +3,15 @@
 
 @layer components {
   .section-title {
-    font-size: t.$title-size-mobile;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: t.$title-tracking;
-    text-align: center;
-
-    @include mq(tablet) {
-      font-size: t.$title-size-tablet;
+    @include responsive-title {
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: t.$title-tracking;
+      text-align: center;
     }
 
-    @include mq(desktop) {
-      font-size: t.$title-size-desktop;
+    &--left {
+      text-align: left;
     }
-  }
-
-  .section-title--left {
-    text-align: left;
   }
 }

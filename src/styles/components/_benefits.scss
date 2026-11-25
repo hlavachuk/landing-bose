@@ -2,41 +2,43 @@
 @use '../abstracts/mixins' as *;
 
 @layer components {
-  .benefits__title {
-    grid-column: 1 / -1;
+  .benefits {
+    &__title {
+      grid-column: 1 / -1;
 
-    @include mq(tablet) {
-      grid-column: 1 / 4;
+      @include mq(tablet) {
+        grid-column: 1 / 4;
+      }
+
+      @include mq(desktop) {
+        grid-column: 1 / 6;
+      }
     }
 
-    @include mq(desktop) {
-      grid-column: 1 / 6;
+    &__content {
+      grid-column: 1 / -1;
+      margin-top: 32px;
+
+      @include mq(tablet) {
+        grid-column: 4 / 7;
+        margin-top: 0;
+      }
+
+      @include mq(desktop) {
+        grid-column: 6 / 11;
+      }
     }
-  }
 
-  .benefits__content {
-    grid-column: 1 / -1;
-    margin-top: 32px;
-
-    @include mq(tablet) {
-      grid-column: 4 / 7;
-      margin-top: 0;
+    &__list {
+      display: grid;
+      gap: 16px;
+      font-weight: 700;
+      line-height: t.$text-line;
     }
 
-    @include mq(desktop) {
-      grid-column: 6 / 11;
+    &__text {
+      margin-top: 40px;
+      line-height: t.$paragraph-line;
     }
-  }
-
-  .benefits__list {
-    display: grid;
-    gap: 16px;
-    font-weight: 700;
-    line-height: t.$text-line;
-  }
-
-  .benefits__text {
-    margin-top: 40px;
-    line-height: t.$paragraph-line;
   }
 }

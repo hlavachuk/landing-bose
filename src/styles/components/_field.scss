@@ -1,44 +1,46 @@
 @use '../abstracts/tokens' as t;
 
 @layer components {
-  .field__input {
-    display: block;
-    width: 100%;
-    height: t.$control-height;
-    padding: 14px 16px;
-    border: 1px solid transparent;
-    border-radius: t.$control-radius;
-    color: var(--color-ink);
-    background: var(--color-field);
-    font-size: 14px;
-    line-height: 20px;
-  }
+  .field {
+    &__input {
+      display: block;
+      width: 100%;
+      height: t.$control-height;
+      padding: 14px 16px;
+      border: 1px solid transparent;
+      border-radius: t.$control-radius;
+      color: var(--color-ink);
+      background: var(--color-field);
+      font-size: 14px;
+      line-height: 20px;
 
-  .field__input::placeholder {
-    color: #7e7e83;
-    opacity: 1;
-  }
+      &::placeholder {
+        color: t.$placeholder;
+        opacity: 1;
+      }
 
-  .field__input:hover {
-    border-color: #d5d7de;
-  }
+      &:hover {
+        border-color: t.$field-border-hover;
+      }
 
-  .field__input:focus-visible {
-    outline: none;
-    border-color: var(--color-ink);
-  }
+      &:focus-visible {
+        outline: none;
+        border-color: var(--color-ink);
+      }
 
-  .field__input:not(:placeholder-shown) {
-    color: var(--color-ink);
-  }
+      &:not(:placeholder-shown) {
+        color: var(--color-ink);
+      }
 
-  .field__input:user-invalid {
-    border-color: #ad1720;
-  }
+      &:user-invalid {
+        border-color: t.$invalid;
+      }
 
-  .field__input--message {
-    height: 148px;
-    border-radius: t.$textarea-radius;
-    resize: vertical;
+      &--message {
+        height: 148px;
+        border-radius: t.$textarea-radius;
+        resize: vertical;
+      }
+    }
   }
 }

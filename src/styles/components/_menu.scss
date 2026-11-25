@@ -7,11 +7,11 @@
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-  }
 
-  .menu:target {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
+    &:target {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 }

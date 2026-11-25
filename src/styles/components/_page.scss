@@ -2,33 +2,35 @@
 @use '../abstracts/mixins' as *;
 
 @layer components {
-  .page:has(.menu:target) .hero,
-  .page:has(.menu:target) .page__main,
-  .page:has(.menu:target) .page__footer {
-    visibility: hidden;
-  }
-
-  .page__section {
-    margin-top: t.$section-gap-mobile;
-
-    @include mq(tablet) {
-      margin-top: t.$section-gap;
+  .page {
+    &:has(.menu:target) .hero,
+    &:has(.menu:target) .page__main,
+    &:has(.menu:target) .page__footer {
+      visibility: hidden;
     }
-  }
 
-  .page__recommended {
-    margin-top: 64px;
+    &__section {
+      margin-top: t.$section-gap-mobile;
 
-    @include mq(tablet) {
-      margin-top: t.$section-gap;
+      @include mq(tablet) {
+        margin-top: t.$section-gap;
+      }
     }
-  }
 
-  .page__footer {
-    margin-top: t.$section-gap-mobile;
+    &__recommended {
+      margin-top: 64px;
 
-    @include mq(tablet) {
-      margin-top: t.$section-gap;
+      @include mq(tablet) {
+        margin-top: t.$section-gap;
+      }
+    }
+
+    &__footer {
+      margin-top: t.$section-gap-mobile;
+
+      @include mq(tablet) {
+        margin-top: t.$section-gap;
+      }
     }
   }
 }

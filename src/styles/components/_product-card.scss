@@ -1,28 +1,30 @@
 @use '../abstracts/tokens' as t;
 
 @layer components {
-  .product-card__image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1;
-    object-fit: contain;
-  }
+  .product-card {
+    &__image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: contain;
+    }
 
-  .product-card__title {
-    margin-top: 32px;
-    font-size: 16px;
-    line-height: t.$text-line;
-    font-weight: 700;
-  }
+    &__title {
+      margin-top: 32px;
+      font-size: 16px;
+      line-height: t.$text-line;
+      font-weight: 700;
+    }
 
-  .product-card__category {
-    margin-top: 8px;
-    line-height: t.$text-line;
-  }
+    &__category {
+      margin-top: 8px;
+      line-height: t.$text-line;
+    }
 
-  .product-card__price {
-    margin-top: 12px;
-    font-weight: 700;
-    line-height: t.$text-line;
+    &__price {
+      margin-top: 12px;
+      font-weight: 700;
+      line-height: t.$text-line;
+    }
   }
 }
